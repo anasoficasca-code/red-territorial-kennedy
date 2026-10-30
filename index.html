@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Red territorial integrada de Kennedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d12;--panel:#10131a;--card:#151922;--line:#232836;--ink:#F2EFE8;--soft:#B5B9C4;--mute:#7A8090;--ochre:#F2B53A;
+ --ui:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;color-scheme:dark}
+*{box-sizing:border-box;font-style:normal}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--ui);-webkit-font-smoothing:antialiased}
+body{display:grid;grid-template-columns:300px minmax(0,1fr) 340px;grid-template-rows:auto minmax(0,1fr);height:100vh;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+header{grid-column:1/-1;display:flex;align-items:center;gap:18px;padding:12px 18px;border-bottom:1px solid var(--line)}
+header h1{margin:0;font-size:19px;font-weight:700;letter-spacing:-.015em}
+header .k{font:600 11px var(--mono);letter-spacing:.1em;color:var(--ochre);text-transform:uppercase}
+.stats{margin-left:auto;display:flex;gap:18px}
+.stats div{text-align:right}.stats b{display:block;font-size:20px;font-weight:700;line-height:1}.stats span{font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+aside{overflow-y:auto;border-right:1px solid var(--line);padding:14px 16px;background:var(--panel)}
+#info{border-right:0;border-left:1px solid var(--line)}
+h2{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+h2:first-child{margin-top:0}
+.tog{display:flex;align-items:center;gap:10px;width:100%;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:7px 10px;margin-bottom:6px;color:var(--soft);font:500 13px var(--ui);cursor:pointer;text-align:left}
+.tog[aria-pressed=false]{opacity:.38}
+.tog b{margin-left:auto;font:500 11px var(--mono);color:var(--mute)}
+.tog svg{flex:none}
+select{width:100%;background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:9px;padding:9px 10px;font:500 13px var(--ui)}
+.note{font-size:12.5px;color:var(--mute);line-height:1.5;margin:6px 0 0}
+main{position:relative;min-height:0;overflow:hidden;background:radial-gradient(circle at 1px 1px,#151a25 1px,transparent 1.3px) 0 0/26px 26px,var(--bg)}
+#net{position:absolute;inset:0;width:100%;height:100%}
+.colh{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;fill:#8b93a6}
+.node{cursor:pointer}
+.node text{font:500 11px var(--ui);fill:#E9E6DE;paint-order:stroke;stroke:#0b0d12;stroke-width:3.2px;stroke-linejoin:round;pointer-events:none}
+.dim .node{opacity:.12}.dim .edge{opacity:.03}.dim .node.on{opacity:1}.dim .edge.on{opacity:.95}
+.edge{fill:none}
+.tip{position:fixed;z-index:20;pointer-events:none;background:#0a0c10;border:1px solid #2b3142;border-radius:9px;padding:8px 10px;max-width:300px;font-size:12.5px;line-height:1.45;color:var(--soft);display:none}
+.tip b{color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.card .t{font:600 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.card h3{margin:4px 0 6px;font-size:17px;line-height:1.25}
+.card p{margin:4px 0 0;font-size:13px;color:var(--soft);line-height:1.5}
+.card img{width:100%;max-height:150px;object-fit:cover;border-radius:8px;margin-top:8px}
+.rel{border-top:1px solid var(--line);padding:8px 0;font-size:12.5px;color:var(--soft);line-height:1.45}
+.rel b{color:var(--ink);font-weight:600}
+.pill{display:inline-block;font:600 10px var(--mono);letter-spacing:.04em;border-radius:5px;padding:1px 6px;margin-right:5px;vertical-align:1px;text-transform:uppercase}
+.zoom{position:absolute;right:12px;bottom:12px;display:flex;gap:6px}
+.zoom button{border:1px solid var(--line);background:rgba(16,19,26,.92);color:var(--soft);border-radius:8px;padding:6px 11px;font:600 13px var(--ui);cursor:pointer}
+@media (max-width:900px){
+ html,body{height:auto;overflow:auto}
+ body{display:flex;flex-direction:column;height:auto}
+ header{flex-wrap:wrap}.stats{margin-left:0;width:100%;justify-content:space-between}
+ main{order:1;height:72vh}
+ #ctrl{order:2;border-right:0;border-top:1px solid var(--line)}
+ #info{order:3;border-left:0;border-top:1px solid var(--line)}
+ .zoom{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header>
+ <div><div class="k">Corte III · Punto 1 · Red territorial integrada</div><h1>Red territorial integrada de Kennedy</h1></div>
+ <div class="stats" id="stats"></div>
+</header>
+<aside id="ctrl">
+ <h2>Recorrer un problema</h2>
+ <select id="prob"><option value="">Toda la red</option></select>
+ <p class="note">Elige un problema del segundo corte: se iluminan sus causas, dónde se localiza, los actores que lo producen o soportan, las especies y decisiones relacionadas.</p>
+ <h2>Tipos de nodo</h2><div id="tNodes"></div>
+ <h2>Tipos de relación</h2><div id="tEdges"></div>
+ <h2>Evidencia</h2><div id="tEv"></div>
+ <p class="note">Las conexiones «comparten territorio» o «comparten entidad» de la conectografía no se incluyen: la cercanía o una entidad común no demuestran interacción.</p>
+</aside>
+<main><svg id="net" role="img" aria-label="Red territorial integrada"></svg><div class="zoom"><button id="zin">+</button><button id="zout">−</button><button id="zfit">Ver todo</button></div></main>
+<aside id="info"></aside>
+<div class="tip" id="tip"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
