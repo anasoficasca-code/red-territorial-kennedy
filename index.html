@@ -15,6 +15,7 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family
 body{display:grid;grid-template-columns:300px minmax(0,1fr) 340px;grid-template-rows:auto minmax(0,1fr);height:100vh;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 header{grid-column:1/-1;display:flex;align-items:center;gap:18px;padding:12px 18px;border-bottom:1px solid var(--line)}
 header h1{margin:0;font-size:19px;font-weight:700;letter-spacing:-.015em}
+header .nav{display:flex;gap:6px}header .nav a{color:var(--soft);text-decoration:none;font:600 13px var(--ui);border:1px solid var(--line);border-radius:999px;padding:6px 12px}header .nav a.on{background:var(--ink);color:#111;border-color:var(--ink)}
 header .k{font:600 11px var(--mono);letter-spacing:.1em;color:var(--ochre);text-transform:uppercase}
 .stats{margin-left:auto;display:flex;gap:18px}
 .stats div{text-align:right}.stats b{display:block;font-size:20px;font-weight:700;line-height:1}.stats span{font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
@@ -62,6 +63,7 @@ main{position:relative;min-height:0;overflow:hidden;background:radial-gradient(c
 <body>
 <header>
  <div><div class="k">Corte III · Punto 1 · Red territorial integrada</div><h1>Red territorial integrada de Kennedy</h1></div>
+ <nav class="nav"><a class="on" href="./">Red integrada</a><a href="matriz.html">Matriz de programa</a></nav>
  <div class="stats" id="stats"></div>
 </header>
 <aside id="ctrl">

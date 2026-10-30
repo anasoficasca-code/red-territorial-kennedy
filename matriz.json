@@ -1,0 +1,360 @@
+{
+ "rows": [
+  {
+   "id": "A1",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D1",
+   "din": "Compra concentrada en un solo nodo",
+   "act": "Tiendas, restaurantes y comedores se abastecen en la central; los hogares compran lo que esa cadena distribuye",
+   "hum": "Corabastos S.A. mayoristas, intermediarios, transportadoras, coteros, personas que abastecen tiendas, tenderos, restaurantes, hogares",
+   "nohum": "",
+   "cond": "",
+   "e": "E1",
+   "esp": "Corabastos (proveedor externo; solo contexto, la propuesta no lo interviene).",
+   "tiempo": "diario; franjas por medir.",
+   "ady": "Corabastos no se modifica; se reconoce como el punto de partida de la dependencia.",
+   "acc": "De Corabastos a las tiendas, comedores y hogares: acceso indirecto por las rutas y vías del barrio, en vehículos de terceros.",
+   "red": "Variable: dependencia de Corabastos. Bucle de equilibrio: la central responde si baja la compra."
+  },
+  {
+   "id": "A2",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D2",
+   "din": "Producción en huertas comunales gestionadas por los barrios",
+   "act": "Cultivo, cuidado y cosecha en vivienda de invasión (patio, cubierta o lote pequeño)",
+   "hum": "hogares y vecinos hortelanos, JAC, residentes",
+   "nohum": "suelo y lombrices, polinizadores, aves pequeñas",
+   "cond": "suelo sin contaminantes; agua disponible; no usar plaguicidas que dañen polinizadores.",
+   "e": "E2",
+   "esp": "huerta de vivienda en asentamiento informal ('invasión').",
+   "tiempo": "cuidado diario corto; cosecha semanal; cambia con la estación.",
+   "ady": "La huerta va junto a la vivienda y cerca de la estación de compostaje y semillero.",
+   "acc": "Hacia el punto de acopio y distribución: acceso indirecto por las rutas del barrio, en carreta o bicicleta. A la huerta entran el hogar y quien este invite.",
+   "red": "Variables: superficie productiva, producción para autoconsumo y excedentes. Bucle de refuerzo: huertas → excedentes → ingresos → más huertas."
+  },
+  {
+   "id": "A3",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D2",
+   "din": "Producción en huertas comunales gestionadas por los barrios",
+   "act": "Cultivo en cubiertas, terrazas, balcones y muros de vivienda de altura",
+   "hum": "copropietarios y residentes, administración del conjunto, hortelanos",
+   "nohum": "polinizadores, microbiota del sustrato",
+   "cond": "peso admisible de la cubierta; riego sin desperdicio; autorización de la copropiedad.",
+   "e": "E3",
+   "esp": "huerta de vivienda de altura (cubierta, terraza, balcón o muro).",
+   "tiempo": "cuidado semanal; cosecha por estación.",
+   "ady": "La huerta se ubica dentro del conjunto; se conecta con la estación de compostaje solo si el conjunto lo permite.",
+   "acc": "Hacia el punto de acopio: acceso indirecto por las rutas del barrio. Dentro del edificio, el paso por ascensor y escaleras depende del reglamento de propiedad horizontal.",
+   "red": "Mismas variables que la huerta de vivienda de invasión, con más restricciones por permisos."
+  },
+  {
+   "id": "A4",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D2",
+   "din": "Producción en huertas comunales gestionadas por los barrios",
+   "act": "Cultivo en terreno baldío adecuado",
+   "hum": "JAC, vecinos, Alcaldía Local o dueño del lote",
+   "nohum": "suelo, vegetación espontánea, fauna del lote",
+   "cond": "análisis de suelo; reconocer la vegetación y fauna que ya usa el lote antes de intervenir.",
+   "e": "E4",
+   "esp": "huerta en terreno baldío.",
+   "tiempo": "ciclos por estación; uso comunitario con horarios acordados.",
+   "ady": "La huerta va junto a la estación de compostaje y cerca del punto de acopio; conviene un lote con acceso a vía.",
+   "acc": "Hacia el punto de acopio: acceso directo o indirecto según el lote. Al lote entra el grupo hortelano, con una regla de uso.",
+   "red": "Variables: superficie productiva disponible; límite de suelo y agua. Bucle de equilibrio: el suelo y el agua limitan cuánto puede crecer la red."
+  },
+  {
+   "id": "A5",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D2",
+   "din": "Producción en huertas comunales gestionadas por los barrios",
+   "act": "Cultivo de bajo impacto en la ronda del humedal, con restauración",
+   "hum": "custodios del humedal, vecinos, Secretaría de Ambiente (A33)",
+   "nohum": "humedal, aves, anfibios y otras especies (por confirmar con registros)",
+   "cond": "sin plaguicidas ni fertilizantes de síntesis; especies nativas; no cortar el movimiento de fauna; evitar épocas de cría.",
+   "e": "E5",
+   "esp": "huerta en la ronda del humedal.",
+   "tiempo": "ciclos adaptados al calendario ecológico (por definir).",
+   "ady": "La huerta queda junto al borde del humedal y separada de la estación de compostaje para evitar que escurran líquidos hacia el agua.",
+   "acc": "Hacia el punto de acopio: acceso indirecto por las rutas del barrio. El acceso humano se limita a horarios y senderos definidos; la fauna conserva sus pasos.",
+   "red": "Variables: presión sobre el borde del humedal y producción de la huerta. Bucle de equilibrio: el límite ecológico."
+  },
+  {
+   "id": "A6",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D3",
+   "din": "Autoconsumo y comensalidad de lo producido",
+   "act": "Cocinar y comer lo cosechado en el barrio",
+   "hum": "hogares, cocineras de comedores comunitarios, colegios (A40), cuidadores",
+   "nohum": "",
+   "cond": "",
+   "e": "E6",
+   "esp": "comedor o cocina comunitaria.",
+   "tiempo": "diario, mediodía; el menú se ajusta a la cosecha.",
+   "ady": "El comedor se ubica junto al punto de acopio o a una huerta, para recibir el producto fresco.",
+   "acc": "Del punto de acopio al comedor: acceso directo o indirecto por las rutas del barrio.",
+   "red": "Variable: parte de la producción que se come en el barrio. Reduce la dependencia de Corabastos."
+  },
+  {
+   "id": "A7",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D4",
+   "din": "Comercio de excedentes: circuito huertas, vendedores y tiendas",
+   "act": "Reunir, pesar y repartir los excedentes de las huertas",
+   "hum": "hortelanos, equipo rotativo del punto, tenderos, vendedores barriales",
+   "nohum": "",
+   "cond": "",
+   "e": "E7",
+   "esp": "punto de acopio y distribución barrial.",
+   "tiempo": "2-3 veces por semana, sincronizado con la cosecha.",
+   "ady": "El punto de acopio va junto al punto de venta de excedentes y cerca de las tiendas, para reducir traslados; conviene que esté cerca de una ciclorruta o vía local.",
+   "acc": "De las huertas al punto de acopio: acceso indirecto por las rutas del barrio. Del punto de acopio a la venta de excedentes y a las tiendas: acceso directo si están cerca.",
+   "red": "Variable: excedentes comercializados. Bucle de refuerzo: huertas → excedentes → ingresos → más huertas."
+  },
+  {
+   "id": "A8",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D4",
+   "din": "Comercio de excedentes: circuito huertas, vendedores y tiendas",
+   "act": "Venta directa de excedentes a vecinos",
+   "hum": "hortelanos, vendedores barriales, hogares",
+   "nohum": "",
+   "cond": "",
+   "e": "E8",
+   "esp": "punto de venta de excedentes (feria o puesto barrial).",
+   "tiempo": "1-2 días por semana, en el horario de mayor demanda.",
+   "ady": "El punto de venta va junto al punto de acopio y sobre el paso de los vecinos.",
+   "acc": "Del punto de acopio al punto de venta: acceso directo. Al público el acceso es abierto.",
+   "red": "Variables: excedentes comercializados; ingresos de los hortelanos. Bucle de refuerzo: huertas → excedentes → ingresos → más huertas."
+  },
+  {
+   "id": "A9",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D4",
+   "din": "Comercio de excedentes: circuito huertas, vendedores y tiendas",
+   "act": "Las tiendas de barrio compran insumos a la red de huertas",
+   "hum": "tenderos, personas que abastecen tiendas, hogares",
+   "nohum": "",
+   "cond": "",
+   "e": "E9",
+   "esp": "tienda de barrio (punto de venta del circuito).",
+   "tiempo": "entregas semanales o diarias según el producto.",
+   "ady": "La tienda no necesita estar junto al punto de acopio, pero sí dentro de la ruta corta de reparto.",
+   "acc": "Del punto de acopio a la tienda: acceso indirecto por las rutas del barrio, con cargas pequeñas.",
+   "red": "Variable: dependencia de Corabastos de las tiendas. Bucle de equilibrio: la central puede bajar precios."
+  },
+  {
+   "id": "A10",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D5",
+   "din": "Insumos circulares de la red (compost, semillas, agua)",
+   "act": "Compostar orgánicos del barrio y de la red; intercambiar semillas y plántulas",
+   "hum": "hortelanos, vecinos, JAC, operadora de aseo y UAESP",
+   "nohum": "microorganismos, lombrices; fauna oportunista (hay que controlar olores y plagas)",
+   "cond": "aireación y temperatura; lejos de viviendas y del humedal.",
+   "e": "E10",
+   "esp": "estación de compostaje y semillero comunitario.",
+   "tiempo": "recepción diaria o semanal; ciclo de compostaje de varias semanas (por definir).",
+   "ady": "La estación va junto a las huertas de vivienda y de lote y separada de la huerta de la ronda del humedal, por los líquidos que escurren.",
+   "acc": "De la estación a las huertas de vivienda y de lote: acceso directo o indirecto. De la estación a la huerta de la ronda: sin acceso directo.",
+   "red": "Variables: orgánicos aprovechados localmente; insumos externos que la red evita comprar."
+  },
+  {
+   "id": "A11",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D5",
+   "din": "Insumos circulares de la red (compost, semillas, agua)",
+   "act": "Reducir la necesidad del recolector informal: el orgánico se trata en origen y se vuelve insumo",
+   "hum": "hogares, comerciantes, hortelanos, operadora de aseo, UAESP, Secretaría de Ambiente",
+   "nohum": "microorganismos del compost",
+   "cond": "",
+   "e": "E11",
+   "esp": "la misma estación de compostaje, más puntos de separación en hogares y tiendas.",
+   "tiempo": "diario.",
+   "ady": "Los puntos de separación van junto a la tienda de barrio y al punto de acopio.",
+   "acc": "De hogares y tiendas a la estación de compostaje: acceso indirecto por las rutas del barrio.",
+   "red": "Variable: orgánicos aprovechados localmente. Quita carga a un oficio que depende de la basura, solo para el orgánico."
+  },
+  {
+   "id": "A12",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D6",
+   "din": "Distrito biotecnológico: proteína alternativa de bajo costo",
+   "act": "Cultivar hongos sobre sustratos de residuos agrícolas y orgánicos",
+   "hum": "técnicos, hortelanos, cooperativa u organización gestora, comerciantes mayoristas como proveedores de sustrato",
+   "nohum": "hongos (especie por definir) y su microbiota; control de esporas y contaminantes",
+   "cond": "temperatura, humedad y limpieza controladas.",
+   "e": "E12",
+   "esp": "distrito biotecnológico, unidad de cultivo.",
+   "tiempo": "ciclos continuos de semanas; operación por turnos.",
+   "ady": "La unidad de cultivo va junto al punto de acopio y a la entrada de sustratos; separada del comedor y de las viviendas por el control de esporas.",
+   "acc": "Del distrito al punto de acopio: acceso directo. Del distrito al comedor: indirecto, pasando por el punto de acopio. El acceso de visitantes es restringido por inocuidad.",
+   "red": "Variables: producción de proteína de hongos; costo de la proteína para los hogares. Bucle de captura si el distrito se vuelve un nuevo nodo concentrado."
+  },
+  {
+   "id": "A13",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D6",
+   "din": "Distrito biotecnológico: proteína alternativa de bajo costo",
+   "act": "Procesar, empacar y distribuir proteína de hongos a comedores y tiendas",
+   "hum": "técnicos, equipo del distrito, cocineras, tenderos, hogares",
+   "nohum": "",
+   "cond": "",
+   "e": "E13",
+   "esp": "distrito biotecnológico (zona de procesamiento) y distribución desde el punto de acopio.",
+   "tiempo": "entregas semanales; producto fresco de vida corta.",
+   "ady": "El procesamiento va junto a la zona de cultivo, con cadena de frío corta hacia el punto de acopio.",
+   "acc": "Del distrito al punto de acopio: acceso directo. Del punto de acopio al comedor y a las tiendas: indirecto por las rutas del barrio.",
+   "red": "Variables: costo de la proteína para los hogares; compras de proteína fuera del circuito."
+  },
+  {
+   "id": "A14",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D7",
+   "din": "Gobierno de la red con rotación corta de responsabilidades",
+   "act": "Deliberar y decidir por asunto: qué se siembra, a quién se vende, cómo se reparte",
+   "hum": "hortelanos, JAC, residentes, tenderos, vendedores, Alcaldía Local",
+   "nohum": "",
+   "cond": "",
+   "e": "E14",
+   "esp": "espacio de aprendizaje y deliberación (salón comunal o aula-huerta).",
+   "tiempo": "reunión mensual; las vocerías rotan cada 1 a 3 meses (propuesta de diseño por validar).",
+   "ady": "El espacio va junto a una huerta o al punto de acopio, para decidir viendo lo que se produce.",
+   "acc": "Acceso a pie desde los barrios; horarios compatibles con el trabajo.",
+   "red": "Variables: carga de trabajo por persona; rotación de vocerías. Bucles de desgaste y de captura."
+  },
+  {
+   "id": "A15",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D7",
+   "din": "Gobierno de la red con rotación corta de responsabilidades",
+   "act": "Transmitir conocimiento para que la rotación sea viable (formación entre pares, huerta escolar)",
+   "hum": "hortelanos experimentados, estudiantes y docentes, vecinos nuevos",
+   "nohum": "",
+   "cond": "",
+   "e": "E15",
+   "esp": "espacio de aprendizaje y huertas escolares.",
+   "tiempo": "sesiones quincenales; ciclo escolar.",
+   "ady": "El espacio de aprendizaje va junto a una huerta, para practicar.",
+   "acc": "Acceso abierto; la experticia asesora pero no manda sobre otros asuntos.",
+   "red": "Variable: capacidad de relevo. Reduce el desgaste."
+  },
+  {
+   "id": "A16",
+   "prob": "P1 · Dependencia alimentaria de Corabastos: la concentración del abastecimiento de alimentos en un solo nodo hace que tiendas, restaurantes, comedores y hogares de Kennedy dependan de él · Kennedy y entorno de la central",
+   "d": "D8",
+   "din": "Información abierta de producción, precios y excedentes",
+   "act": "Registrar qué se produce, cuánto sobra y a qué precio, y publicarlo",
+   "hum": "hortelanos, equipo del punto de acopio, tenderos, vendedores, hogares",
+   "nohum": "",
+   "cond": "",
+   "e": "E16",
+   "esp": "tablero público dentro del punto de acopio o del espacio de aprendizaje.",
+   "tiempo": "semanal.",
+   "ady": "El tablero va dentro del punto de acopio o del espacio de aprendizaje.",
+   "acc": "Acceso abierto.",
+   "red": "Variable: información de precios y producción disponible. Evita que el circuito vuelva a concentrarse en pocas manos (bucle de captura)."
+  }
+ ],
+ "din": [
+  {
+   "id": "D1",
+   "n": "Compra concentrada en un solo nodo"
+  },
+  {
+   "id": "D2",
+   "n": "Producción en huertas comunales gestionadas por los barrios"
+  },
+  {
+   "id": "D3",
+   "n": "Autoconsumo y comensalidad de lo producido"
+  },
+  {
+   "id": "D4",
+   "n": "Comercio de excedentes: circuito huertas, vendedores y tiendas"
+  },
+  {
+   "id": "D5",
+   "n": "Insumos circulares de la red (compost, semillas, agua)"
+  },
+  {
+   "id": "D6",
+   "n": "Distrito biotecnológico: proteína alternativa de bajo costo"
+  },
+  {
+   "id": "D7",
+   "n": "Gobierno de la red con rotación corta de responsabilidades"
+  },
+  {
+   "id": "D8",
+   "n": "Información abierta de producción, precios y excedentes"
+  }
+ ],
+ "esp": [
+  {
+   "id": "E1",
+   "n": "Corabastos"
+  },
+  {
+   "id": "E2",
+   "n": "Huerta de vivienda informal"
+  },
+  {
+   "id": "E3",
+   "n": "Huerta de vivienda en altura"
+  },
+  {
+   "id": "E4",
+   "n": "Huerta en lote baldío"
+  },
+  {
+   "id": "E5",
+   "n": "Huerta en la ronda del humedal"
+  },
+  {
+   "id": "E6",
+   "n": "Comedor o cocina comunitaria"
+  },
+  {
+   "id": "E7",
+   "n": "Punto de acopio y distribución"
+  },
+  {
+   "id": "E8",
+   "n": "Punto de venta de excedentes"
+  },
+  {
+   "id": "E9",
+   "n": "Tienda de barrio"
+  },
+  {
+   "id": "E10",
+   "n": "Estación de compostaje y semillero"
+  },
+  {
+   "id": "E11",
+   "n": "Puntos de separación en hogares y tiendas"
+  },
+  {
+   "id": "E12",
+   "n": "Distrito biotecnológico · cultivo"
+  },
+  {
+   "id": "E13",
+   "n": "Distrito biotecnológico · procesamiento"
+  },
+  {
+   "id": "E14",
+   "n": "Espacio de aprendizaje y deliberación"
+  },
+  {
+   "id": "E15",
+   "n": "Espacio de aprendizaje y huertas escolares"
+  },
+  {
+   "id": "E16",
+   "n": "Tablero público"
+  }
+ ]
+}
