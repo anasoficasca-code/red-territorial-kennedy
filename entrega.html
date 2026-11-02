@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Entrega 4 de noviembre · Corte III · Kennedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d12;--card:#151922;--line:#232836;--ink:#F2EFE8;--soft:#B5B9C4;--mute:#7A8090;--ochre:#F2B53A;--ui:'Instrument Sans',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;color-scheme:dark}
+*{box-sizing:border-box;font-style:normal}
+html{scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)}
+.top{position:sticky;top:0;z-index:10;background:rgba(11,13,18,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 22px;padding-top:calc(10px + env(safe-area-inset-top,0px));display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.top b{font-size:15px}.nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}.nav a{color:var(--soft);text-decoration:none;font:600 13px var(--ui);border:1px solid var(--line);border-radius:999px;padding:6px 12px}.nav a.on{background:var(--ink);color:#111;border-color:var(--ink)}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 22px 80px}
+.k{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ochre)}
+h1{font-size:clamp(28px,3.6vw,44px);letter-spacing:-.02em;margin:8px 0 12px;line-height:1.08}
+h2{font-size:24px;letter-spacing:-.01em;margin:56px 0 8px}
+h3{font-size:17px;margin:0 0 6px}
+p,li{font-size:15.5px;line-height:1.6;color:var(--soft)}
+.lede{font-size:17px;max-width:900px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.toc a{color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px}
+.prob{border:1px solid #E0623F66;background:linear-gradient(90deg,#2a1510,#151922);border-radius:16px;padding:20px 22px;margin-top:14px}
+.prob b{font-size:21px;color:var(--ink);line-height:1.35;display:block}
+table{border-collapse:collapse;width:100%;margin-top:14px}
+.tb{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+th{text-align:left;font:600 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute);padding:11px 12px;border-bottom:1px solid var(--line);background:#121620}
+td{vertical-align:top;padding:12px;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.5;color:var(--soft)}td:first-child{color:var(--ink);font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.card p{margin:6px 0 0;font-size:14.5px}
+.tag{display:inline-block;font:600 10.5px var(--mono);letter-spacing:.05em;text-transform:uppercase;border-radius:5px;padding:2px 7px;margin-right:6px}
+.slide{border:1px solid var(--line);border-radius:18px;padding:30px 34px;margin-top:16px;background:linear-gradient(135deg,#151922,#10131a);aspect-ratio:16/9;display:flex;flex-direction:column;justify-content:center}
+.slide h3{font-size:clamp(20px,2.4vw,30px);letter-spacing:-.015em;margin:6px 0 14px;color:var(--ink)}
+.slide ul{margin:0;padding-left:20px}.slide li{font-size:clamp(14px,1.45vw,18px);margin-bottom:8px}
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin-top:14px}.flow .card{text-align:center}.arrow{color:var(--ochre);font-size:22px}
+ol li{margin-bottom:6px}
+@media (max-width:900px){.g2,.g3{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);text-align:center}.slide{aspect-ratio:auto}}
+</style>
+</head>
+<body>
+<div class="top"><b>Red territorial integrada de Kennedy</b><nav class="nav"><a href="./">Red integrada</a><a href="matriz.html">Matriz de programa</a><a href="simulador.html">Simulador</a><a class="on" href="entrega.html">Entrega 4 nov</a></nav></div>
+<div class="wrap">
+<div class="k">Corte III · Entrega del miércoles 4 de noviembre de 2026</div>
+<h1>Correcciones aplicadas, programa arquitectónico y avance del simulador</h1>
+<p class="lede">Esta página reúne lo que pide la guía del 4 de noviembre y cómo respondimos a la revisión del 30 de octubre. Cada punto enlaza con el módulo donde está aplicado: la red integrada, la matriz con su diagrama espacial y el simulador.</p>
+<div class="toc"><a href="#problema">1. Problema</a><a href="#correcciones">2. Correcciones</a><a href="#decisiones">3. Decisiones del grupo</a><a href="#recorrido">4. Recorrido de lo producido</a><a href="#simulador">5. Simulador</a><a href="#referentes">6. Referentes</a><a href="#porque">7. ¿Por qué modelar?</a><a href="#lecturas">8. Lecturas</a></div>
+
+<h2 id="problema">1. El problema en una frase</h2>
+<div class="prob"><b>La concentración del abastecimiento de alimentos en un solo nodo, Corabastos, hace que tiendas, comedores, colegios y hogares de Kennedy dependan de él para casi todo lo que comen y que no puedan decidir sobre ese abastecimiento.</b></div>
+<p>No hablamos de la concentración de la propiedad ni de los precios, sino del paso de los alimentos por un único lugar. La medimos con una variable: <b style="color:var(--ink)">la parte de lo que se consume en Kennedy que pasa por Corabastos</b> (volumen). Corabastos es el nodo porque es la central mayorista que abastece a la ciudad y está dentro de Kennedy, al lado del humedal La Vaca.</p>
+<p>El problema se repite donde un barrio depende de una sola central y no tiene circuitos propios. Lo que se replica no es Corabastos ni el distrito, sino el mecanismo: huertas y acopios por barrio, compras conjuntas y una organización con roles rotativos. Un barrio puede implantarlo si tiene suelo disponible (lotes, cubiertas o rondas), organizaciones comunitarias activas, comedores o colegios que compren y una forma de mover cargas pequeñas.</p>
+
+<h2 id="correcciones">2. Lo que señalaron y cómo lo corregimos</h2>
+<div class="tb"><table><thead><tr><th style="width:22%">Lo que señalaron</th><th style="width:48%">Qué cambiamos</th><th>Dónde está</th></tr></thead><tbody>
+<tr><td>El problema no estaba definido</td><td>Una frase que distingue alimentos de mercado y una variable para medirlo: la dependencia de Corabastos.</td><td>Punto 1, matriz (columna Problema), modelo (variable Dependencia)</td></tr>
+<tr><td>Cambiar de proveedor no descentraliza</td><td>Lo que producen huertas y distrito no se vende a Corabastos: va a acopios barriales y de ahí a tiendas, comedores y colegios. En la red, las relaciones de abastecimiento de alimentos que vienen de la cadena de Corabastos pasan del 88 % (red actual) al 54 % (red propuesta).</td><td>Red integrada (botón Actual / Propuesta), punto 4</td></tr>
+<tr><td>Faltaba el cómo</td><td>Cada función del distrito dice qué parte del problema ataca y con qué mecanismo; la energía es una necesidad con alternativas y un escenario de corte de luz.</td><td>Punto 3, matriz, simulador (escenario «Se va la luz»)</td></tr>
+<tr><td>No estaba claro qué pasa con Corabastos</td><td>Sigue con función reducida: recibe, almacena y redistribuye lo que Bogotá no produce (carnes, granos, tubérculos e importados), con tratamiento de residuos dentro de la central, y cede cerca del 20 % de su área al humedal.</td><td>Matriz (fila de Corabastos), red, láminas de Corabastos</td></tr>
+<tr><td>Gobierno y gobernanza confusos; cómo se decide</td><td>Definiciones propias con un ejemplo y una regla de decisión: proceso de consulta, decisión por consentimiento en cada núcleo, mayoría calificada si se bloquea y vocerías rotativas y revocables.</td><td>Punto 3, matriz (espacio E11)</td></tr>
+<tr><td>La red mezclaba actores, recursos y acciones</td><td>Nodos separados por tipo: personas y organizaciones, especies, lugares, infraestructuras y tecnologías, recursos y condiciones (variables). Los camiones son tecnología, no actores; las acciones son relaciones. El distrito, los acopios y los custodios del humedal están en la red.</td><td>Red integrada</td></tr>
+<tr><td>El valor del grupo no estaba declarado</td><td>Lo declaramos como posición: menos carne y más proteína alternativa barata. Una sola tecnología en todo el proyecto: hongos.</td><td>Punto 3</td></tr>
+<tr><td>Faltaban realismo y límites</td><td>Autonomía relativa: qué se produce en los barrios, qué se sigue trayendo de fuera y qué se compra en conjunto.</td><td>Punto 4, matriz (fila de compras conjuntas)</td></tr>
+<tr><td>Para qué sirve el modelo</td><td>Propósito, usuarios, escenarios y qué se replica.</td><td>Puntos 5 y 7</td></tr>
+</tbody></table></div>
+
+<h2 id="decisiones">3. Decisiones del grupo</h2>
+<div class="g2">
+<div class="card"><span class="tag" style="background:#DE9F5033;color:#DE9F50">Corabastos</span><h3>Función reducida, no desaparece</h3><p>Recibe, almacena y redistribuye carnes, granos, tubérculos e importados, porque eso no se puede producir en los barrios. Las bodegas de carnes quedan junto a una planta de tratamiento de aguas y compostaje controlado de sus residuos. Las bodegas de frutas y verduras se reducen porque parte de eso crece en huertas de Bogotá. Cede cerca del 20 % de su área, del lado del humedal, para restaurarlo.</p></div>
+<div class="card"><span class="tag" style="background:#3E8FB033;color:#6FB7E0">Humedal</span><h3>Quién habla por el humedal</h3><p>El humedal no actúa solo: lo agencian sus custodios, los colectivos ambientales y vecinos organizados, con la EAAB y la Secretaría de Ambiente. Técnica de restauración: humedal de tratamiento de flujo subsuperficial para la escorrentía y revegetalización con especies nativas, con monitoreo mensual. Se escogió porque el problema principal es el agua contaminada que llega; se sostiene con los custodios y recursos del Fondo Común.</p></div>
+<div class="card"><span class="tag" style="background:#A08CF033;color:#A08CF0">Decisión</span><h3>Cómo se decide</h3><p>1) Quien detecta un problema lo propone, sea quien sea; no lo abre siempre el tendero. 2) Consulta obligatoria a quienes son afectados y a quienes saben del asunto (proceso de consulta de Laloux). 3) Decisión por consentimiento en el núcleo del asunto: se aprueba si nadie tiene una objeción razonada. 4) Si una objeción no se resuelve en dos sesiones, decide la mayoría de dos tercios del núcleo. 5) Ejecuta quien asumió la tarea; revisa el núcleo al mes. Las vocerías rotan cada 8 semanas y se pueden revocar. Esto evita que la decisión se concentre, como advierte Maldonado sobre la heterarquía.</p></div>
+<div class="card"><span class="tag" style="background:#8EBF4C33;color:#8EBF4C">Tecnología</span><h3>Hongos, y solo hongos</h3><p>El distrito cultiva orellanas sobre sustratos hechos con residuos vegetales de Corabastos y del barrio. Es una técnica conocida, barata y de ciclo corto, y cierra el circuito de residuos. No incluimos carne cultivada (costosa y aún lejos de ser accesible) ni insectos (baja aceptación y permisos sanitarios por resolver). La misma lista va en el guion, la red y la matriz.</p></div>
+<div class="card"><span class="tag" style="background:#E0623F33;color:#E0623F">Valor</span><h3>Nuestra posición</h3><p>Defendemos una alimentación con menos carne y con proteínas alternativas más baratas, producidas cerca. Es una posición del grupo, no un dato: sabemos que otros pueden no compartirla. La sustentan los macromodelos de comercio ecológico y autonomía territorial, y de circularidad.</p></div>
+<div class="card"><span class="tag" style="background:#F2B53A33;color:#F2B53A">Conceptos</span><h3>Gobierno, gobernanza y autogobierno</h3><p>Gobierno: las autoridades con competencia legal, como la Alcaldía, la UAESP o la Secretaría de Ambiente. Gobernanza: cómo se coordinan esas autoridades con quienes no son Estado, y cómo responden los grupos a una norma: acatándola, resistiéndola o adaptándola. Autogobierno: quienes comparten un recurso fijan sus propias reglas. Ejemplo: si la Alcaldía ordena cerrar un lote baldío, la junta puede acatar, resistir con una tutela, o adaptar proponiendo una huerta con reglas de uso que la Alcaldía reconozca.</p></div>
+</div>
+<p><b style="color:var(--ink)">Soporte material para organizarse:</b> un salón comunal o aula (E11) junto a una huerta o al acopio, reuniones quincenales por núcleo y una asamblea mensual de compras, en horarios compatibles con el trabajo, y un tablero público en el acopio con lo producido, lo que sobra y los precios.</p>
+
+<h2 id="recorrido">4. Recorrido de lo producido y autonomía relativa</h2>
+<div class="flow">
+<div class="card"><h3>Huertas y distrito</h3><p>Hortalizas, aromáticas, algunas frutas y proteína de hongos.</p></div><div class="arrow">→</div>
+<div class="card"><h3>Acopios barriales</h3><p>Reúnen, pesan y reparten; no pasan por Corabastos.</p></div><div class="arrow">→</div>
+<div class="card"><h3>Tiendas, comedores y colegios</h3><p>Compran primero lo local según los acuerdos.</p></div>
+</div>
+<div class="g3">
+<div class="card"><h3>Se produce en los barrios</h3><p>Hortalizas de hoja, aromáticas, algunas frutas de ciclo corto y hongos.</p></div>
+<div class="card"><h3>Se sigue trayendo de fuera</h3><p>Carnes, granos, papa y tubérculos, lácteos e importados, por Corabastos con función reducida.</p></div>
+<div class="card"><h3>Se compra en conjunto</h3><p>Granos, tubérculos y carnes cada mes con el Fondo Común, para tiendas, comedores y colegios.</p></div>
+</div>
+<p>Escenario del simulador (supuesto, no dato medido): con 140 huertas activas, acuerdos de compra local del 60 % y el distrito al 60 %, la dependencia de Corabastos baja de cerca del 98 % a cerca del 84 % en las primeras semanas, y los viajes de camión bajan en proporción. Es una autonomía relativa: el sistema sigue intercambiando con el exterior. Energía y agua entran como insumos con respaldo.</p>
+
+<h2 id="simulador">5. Avance del simulador</h2>
+<p><b style="color:var(--ink)">Propósito.</b> Mostrar a juntas, comedores, recicladores, comerciantes y entidades cómo respondería el territorio a la propuesta antes de implementarla, y qué condiciones la sostienen o la rompen. Lo usarían en el espacio de deliberación para decidir cuántas huertas activar, qué acuerdos de compra firmar y cada cuánto rotar las vocerías.</p>
+<p><a href="simulador.html" style="color:var(--ochre)">Abrir el simulador</a>. Es una herramienta web propia, construida sobre el plano real de Kennedy.</p>
+<div class="tb"><table><thead><tr><th>Unidad</th><th>Tipo</th><th>Por qué así</th><th>Reglas y comportamiento</th></tr></thead><tbody>
+<tr><td>Kennedy: límite, humedales, Corabastos</td><td>Entorno</td><td>Condiciona a todos y no tiene objetivos propios en la escala del barrio.</td><td>El humedal tiene calidad de hábitat que sube con el área cedida y baja con la contaminación. Corabastos se reduce según el área cedida.</td></tr>
+<tr><td>Huertas, comedores, colegios, barrios (juntas)</td><td>Agentes pasivos</td><td>Recursos y demanda en ubicaciones reales; no se mueven ni deciden en el modelo.</td><td>Las huertas producen según polinización y compost; los demás piden alimentos cada día.</td></tr>
+<tr><td>Camiones de Corabastos</td><td>Agente activo</td><td>Llevan lo que lo local no cubre.</td><td>Salen de la central según la dependencia y vuelven vacíos.</td></tr>
+<tr><td>Hortelanos y repartidores en bicicleta</td><td>Agente activo</td><td>Mueven la cosecha y los hongos por el circuito corto.</td><td>Van de la huerta o el distrito al acopio y de ahí a comedores o barrios.</td></tr>
+<tr><td>Recicladores cogestores</td><td>Agente activo</td><td>Cierran el ciclo de residuos.</td><td>Recogen orgánicos en los barrios y los llevan al compostaje o al distrito como sustrato.</td></tr>
+<tr><td>Aves del humedal</td><td>Agente activo</td><td>Indicadoras del hábitat.</td><td>Bandada con separación, alineación y cohesión (zonas de Couzin); vuelven a su humedal y evitan el ruido de Corabastos. Su número sigue la calidad del hábitat.</td></tr>
+<tr><td>Polinizadores</td><td>Agente activo</td><td>Sostienen la producción.</td><td>Visitan huertas activas cercanas; cada visita aumenta la cosecha (forrajeo de Qu y otros).</td></tr>
+</tbody></table></div>
+<p><b style="color:var(--ink)">Es un sistema multiagente heterogéneo:</b> cinco tipos de agentes activos con reglas distintas, más agentes pasivos y entorno.</p>
+<div class="g2">
+<div class="card"><h3>Interacciones agente–agente</h3><p>Polinizador → huerta: más cosecha. Hortelano → acopio → comedor: alimento local. Reciclador → distrito: sustrato que se vuelve proteína. Camión ↔ ave: el ruido de la central las aleja.</p></div>
+<div class="card"><h3>Interacciones agente–entorno</h3><p>Residuos no recogidos → contaminación del humedal → menos aves. Área cedida → más hábitat. Corte de luz sin respaldo → el distrito para. Sin rotación → desgaste → menos participación → menos huertas activas.</p></div>
+</div>
+<p><b style="color:var(--ink)">Variables que cambia quien lo usa:</b> huertas activas, acuerdos de compra local, recicladores organizados, área cedida al humedal, frecuencia de rotación de vocerías, capacidad del distrito, respuesta de la central (baja de precios), respaldo de energía y corte de luz. <b style="color:var(--ink)">Condición inicial:</b> el escenario «Hoy». <b style="color:var(--ink)">Escenarios:</b> Hoy, Propuesta, Sin rotación, La central responde y Se va la luz. La cámara pasa de un agente a otro y acerca la vista, como en Everything.</p>
+<p><b style="color:var(--ink)">Qué está sustentado y qué es hipótesis.</b> Ubicaciones de huertas, comedores, colegios, juntas y humedales: datos de IDECA. Rendimientos, capacidades, el efecto del ruido sobre las aves y la respuesta de la central: reglas por verificar con datos del territorio. Lo calibraremos comparando patrones observados, como propone el modelado orientado a patrones (Grimm y otros, 2005).</p>
+
+<h2 id="referentes">6. Referentes revisados</h2>
+<div class="tb"><table><thead><tr><th>Referente</th><th>Qué aporta</th><th>Qué cambiamos</th></tr></thead><tbody>
+<tr><td>Flocking (biblioteca de NetLogo)</td><td>Reglas de bandada para las aves.</td><td>Les agregamos un humedal al que vuelven y la evasión del ruido de la central.</td></tr>
+<tr><td>Wolf Sheep Predation (NetLogo)</td><td>Dinámica consumidor–recurso con reposición.</td><td>La usamos para demanda de alimentos y producción de huertas, no para depredación.</td></tr>
+<tr><td>Ants (NetLogo)</td><td>Agentes que llevan carga entre una fuente y un nido.</td><td>Así se mueven recicladores y repartidores entre barrios, acopios y distrito.</td></tr>
+<tr><td>Segregation de Schelling (NetLogo)</td><td>Cómo reglas locales simples producen patrones globales.</td><td>No lo usamos tal cual: lo tomamos como argumento de que la concentración puede emerger sin que nadie la decida.</td></tr>
+<tr><td>Everything (David OReilly)</td><td>Cambio de escala y de punto de vista.</td><td>La cámara pasa de la vista del territorio a seguir a un agente.</td></tr>
+<tr><td>God’s Eye</td><td>Vista desde arriba con capas y variables que se pueden cambiar.</td><td>Tomamos la idea de ver el territorio completo y modificar sus condiciones. Antes de reutilizar código hay que confirmar que el repositorio sea el del proyecto y revisar su licencia.</td></tr>
+<tr><td>Documentos .md de la guía</td><td>Zonas de Couzin, forrajeo de polinizadores, redes multicapa y modelado orientado a patrones.</td><td>Usamos la bandada, el forrajeo y la validación por patrones; el resto queda para fases siguientes.</td></tr>
+</tbody></table></div>
+
+<h2 id="porque">7. ¿Por qué modelar el problema?</h2>
+<p>Apoyados en «Why Model?» de Joshua M. Epstein.</p>
+<div class="slide"><div class="k">Diapositiva 1 de 2</div><h3>Modelamos para explicar, no solo para predecir</h3><ul>
+<li>Epstein recuerda que todos modelamos, aunque sea en la cabeza; el modelo hace explícitos nuestros supuestos para que otros los discutan.</li>
+<li>Queremos explicar cómo la dependencia de Corabastos se sostiene: muchas decisiones pequeñas de tiendas, comedores y hogares.</li>
+<li>Mostrar las dinámicas centrales: compra local, residuos, hábitat y desgaste de la organización.</li>
+<li>Guiar qué datos recoger: rendimiento de huertas, volúmenes de compra, residuos y conteos de aves.</li></ul></div>
+<div class="slide"><div class="k">Diapositiva 2 de 2</div><h3>Qué esperamos comprender o explorar</h3><ul>
+<li>Los compromisos entre opciones: más huertas frente a más desgaste si no hay rotación.</li>
+<li>La incertidumbre clave: cuánto responde la central si baja su venta.</li>
+<li>Qué escenarios rompen la propuesta (corte de luz, precios) y cuáles la sostienen.</li>
+<li>Disciplinar el diálogo: que juntas, recicladores y entidades discutan sobre las mismas reglas visibles.</li></ul></div>
+
+<h2 id="lecturas">8. Lecturas para el lunes 9 de noviembre, en este orden</h2>
+<ol><li>«Hacia la Creación de un Simulador como Innovación para Abordar la Complejidad», de Ricardo Rosales Cisneros y colaboradores.</li><li>«El imaginario numérico», de Arlindo Machado (versión editada).</li><li>«Modelamiento y simulación de sistemas complejos», de Carlos Eduardo Maldonado y Nelson Alfonso Gómez (versión editada).</li></ol>
+</div>
+</body>
+</html>

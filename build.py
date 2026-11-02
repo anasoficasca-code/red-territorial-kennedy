@@ -104,6 +104,27 @@ PE=[('A15','X_ABAST','decision','propone'),('INF03','X_ABAST','decision','propon
  ('AMB04','X_HUMED','decision','encabeza'),('A37','X_HUMED','decision','participa'),('X_HUMED','NOD-EEP01','cooperacion','cuida'),('X_HUMED','NOD-EEP02','cooperacion','cuida'),('X_HUMED','NOD-EEP03','cooperacion','cuida'),('N06','X_HUMED','decision','comparte datos'),
  ('X_ABAST','P_dep','decision','aborda'),('X_HORAS','P_trans','decision','aborda'),('X_RESID','P_res','decision','aborda'),('X_HUMED','P_eco','decision','aborda'),('X_FONDO','P_may','decision','reduce dependencia')]
 for s,t,k,sub in PE: E(s,t,k,sub,'propuesta','Propuesta del grupo (Corte III)','Relación propuesta por el grupo.')
+
+# ---- correcciones de la revisión: recursos, distrito, custodios y tipos de nodo
+for i in ('LOG01','RES01'):
+    if i in nodes: nodes[i]['tipo']='infraestructura'; nodes[i]['nota']='Tecnología o medio material (no actor)'
+for n in nodes.values():
+    if n['tipo']=='condicion': n['tipo']='variable'
+REC=[('R_EXT','Alimentos que llegan de fuera de Bogotá','Carnes, granos, tubérculos e importados'),('R_LOC','Alimentos de huertas de Bogotá','Hortalizas, aromáticas y frutas de huertas urbanas y periurbanas'),
+ ('R_ORG','Residuos orgánicos','De bodegas, comercios y hogares'),('R_SUST','Sustratos para hongos','Residuos vegetales y de poda acondicionados'),('R_PROT','Proteína de hongos','Orellanas cultivadas en el distrito'),
+ ('R_ABONO','Abono y semillas','Compost del barrio'),('R_AGUA','Agua','Acueducto y aguas lluvias'),('R_ENER','Energía','Red eléctrica con respaldo')]
+for i,n,d in REC: N(i,tipo='recurso',name=n,short=n,fun=d,fuente='Corrección de la revisión (recursos como nodos propios)')
+N('X_DIST',tipo='propuesta',name='Distrito agro-biotecnológico',short='Distrito agro-biotecnológico',fun='Cultiva hongos sobre sustratos de residuos, forma a la comunidad y distribuye proteína por el circuito corto',fuente='Propuesta del grupo (Corte III)')
+N('X_COOP',tipo='actor',name='Cooperativa barrial del distrito',short='Cooperativa barrial',fun='Opera el distrito con roles rotativos',fuente='Propuesta del grupo (Corte III)')
+N('X_ACOP',tipo='propuesta',name='Puntos de acopio barriales',short='Acopio barrial',fun='Reúnen y reparten lo producido en el barrio',fuente='Propuesta del grupo (Corte III)')
+CE=[('A01','R_EXT','flujo','recibe y redistribuye (función reducida)','propuesta'),('R_EXT','A15','flujo','abastece lo que Bogotá no produce','diagnóstico'),
+ ('COM_HUE','R_LOC','flujo','produce','propuesta'),('R_LOC','X_ACOP','flujo','llega al acopio','propuesta'),('X_ACOP','A15','flujo','abastece tiendas','propuesta'),('X_ACOP','INF03','flujo','abastece comedores','propuesta'),('X_ACOP','C01','flujo','abastece colegios','propuesta'),
+ ('A06','R_ORG','flujo','genera','diagnóstico'),('A23','R_ORG','flujo','genera','diagnóstico'),('R_ORG','X_RESID','flujo','se recupera','propuesta'),('X_RESID','R_SUST','flujo','acondiciona','propuesta'),('X_RESID','R_ABONO','flujo','composta','propuesta'),('R_ABONO','COM_HUE','flujo','fertiliza','propuesta'),
+ ('R_SUST','X_DIST','flujo','alimenta el cultivo','propuesta'),('X_DIST','R_PROT','flujo','produce','propuesta'),('R_PROT','X_ACOP','flujo','se distribuye','propuesta'),
+ ('X_COOP','X_DIST','decision','opera con roles rotativos','propuesta'),('X_ABAST','X_DIST','decision','acuerda volúmenes y precios','propuesta'),('R_AGUA','X_DIST','flujo','insumo','propuesta'),('R_ENER','X_DIST','flujo','insumo con respaldo','propuesta'),('R_AGUA','COM_HUE','flujo','riego','diagnóstico'),
+ ('AMB04','NOD-EEP02','cooperacion','agencia por el humedal (custodio)','propuesta'),('AMB04','NOD-EEP01','cooperacion','agencia por el humedal (custodio)','propuesta'),('A37','NOD-EEP02','cooperacion','agencia por el humedal (custodio)','propuesta'),
+ ('X_DIST','P_dep','decision','aborda','propuesta'),('X_ACOP','P_may','decision','reduce el paso por la central','propuesta')]
+for s_,t_,k,sub,ev in CE: E(s_,t_,k,sub,ev,'Corrección de la revisión (30/10/2026)','Relación añadida o aclarada tras la revisión.')
 deg=collections.Counter();[deg.update([e['s'],e['t']]) for e in edges]
 iso=[i for i in nodes if deg[i]==0]
 for i in iso: nodes.pop(i)

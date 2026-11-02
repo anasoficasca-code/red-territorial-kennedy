@@ -63,10 +63,13 @@ main{position:relative;min-height:0;overflow:hidden;background:radial-gradient(c
 <body>
 <header>
  <div><div class="k">Corte III · Punto 1 · Red territorial integrada</div><h1>Red territorial integrada de Kennedy</h1></div>
- <nav class="nav"><a class="on" href="./">Red integrada</a><a href="matriz.html">Matriz de programa</a></nav>
+ <nav class="nav"><a class="on" href="./">Red integrada</a><a href="matriz.html">Matriz de programa</a><a href="simulador.html">Simulador</a><a href="entrega.html">Entrega 4 nov</a></nav>
  <div class="stats" id="stats"></div>
 </header>
 <aside id="ctrl">
+ <h2>Red actual o propuesta</h2>
+ <div style="display:flex;gap:6px"><button class="tog" id="mAct" aria-pressed="false" style="justify-content:center">Actual</button><button class="tog" id="mProp" aria-pressed="true" style="justify-content:center">Propuesta</button></div>
+ <p class="note" id="modeInfo"></p>
  <h2>Recorrer un problema</h2>
  <select id="prob"><option value="">Toda la red</option></select>
  <p class="note">Elige un problema del segundo corte: se iluminan sus causas, dónde se localiza, los actores que lo producen o soportan, las especies y decisiones relacionadas.</p>

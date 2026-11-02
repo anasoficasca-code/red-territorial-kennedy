@@ -5,14 +5,14 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&g
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const mobile=()=>matchMedia('(max-width:900px)').matches;
 
-const TN={problema:{n:'Problemas (Corte II)',c:'#E0623F'},lugar:{n:'Lugares y hábitats',c:'#6FCF97'},infraestructura:{n:'Infraestructuras',c:'#4EAECF'},norma:{n:'Normas y condicionantes',c:'#9AA3B5'},condicion:{n:'Condiciones y presiones',c:'#F0A35E'},actor:{n:'Actores y organizaciones',c:'#B3A6EE'},propuesta:{n:'Propuesta del grupo',c:'#F2B53A'},especie:{n:'Especies',c:'#8EBF4C'}};
+const TN={problema:{n:'Problemas (Corte II)',c:'#E0623F'},lugar:{n:'Lugares y hábitats',c:'#6FCF97'},infraestructura:{n:'Infraestructuras',c:'#4EAECF'},norma:{n:'Normas y condicionantes',c:'#9AA3B5'},variable:{n:'Condiciones (variables del modelo)',c:'#F0A35E'},recurso:{n:'Recursos',c:'#E5C07B'},actor:{n:'Actores y organizaciones',c:'#B3A6EE'},propuesta:{n:'Propuesta del grupo',c:'#F2B53A'},especie:{n:'Especies',c:'#8EBF4C'}};
 const PG={1:'#DE9F50',2:'#8EBF4C',3:'#4EAECF'};
 const SPC={cor:'#DE9F50',log:'#4EAECF',con:'#DE7766',res:'#8EBF4C',gob:'#9382E0',edu:'#CF7ABB',sal:'#4EBF94',mov:'#BFB080'};
 const TX={Flora:'#84A48B',Aves:'#7DA0B8','Mamíferos':'#D9A066','Artrópodos':'#A386A9',Anfibios:'#6B9080',Reptiles:'#C98A94'};
 const EK={ecologica:{n:'Interacción ecológica',c:'#7FB77E'},flujo:{n:'Flujo material o económico',c:'#E5A54B'},espacial:{n:'Relación espacial',c:'#6C8CB5'},decision:{n:'Decisión y acción',c:'#A08CF0'},cooperacion:{n:'Cooperación',c:'#D8D3C7'},conflicto:{n:'Conflicto y presión',c:'#E0623F'},causal:{n:'Causa entre problemas',c:'#F07B5C'}};
 const EV={documentada:{n:'Documentada con fuente',d:null,o:.75},'diagnóstico':{n:'Diagnóstico del grupo',d:null,o:.5},potencial:{n:'Potencial (por regla de afinidad)',d:'2 4',o:.28},'hipótesis':{n:'Hipótesis por verificar',d:'7 5',o:.6},propuesta:{n:'Propuesta del grupo',d:'7 5',o:.8}};
-const COL=t=>({problema:0,lugar:1,infraestructura:1,norma:1,condicion:1,actor:2,propuesta:2,especie:3})[t];
-const COLN=['Problemas','Lugares, hábitats e infraestructuras','Actores y propuesta','Especies'];
+const COL=t=>({problema:0,lugar:1,infraestructura:1,norma:1,variable:1,recurso:2,actor:3,propuesta:3,especie:4})[t];
+const COLN=['Problemas','Lugares, infraestructuras y tecnologías','Recursos','Personas, organizaciones y propuesta','Especies'];
 const fill=n=>n.tipo==='problema'?PG[n.grupo]||TN.problema.c:n.tipo==='actor'?(SPC[n.sph]||TN.actor.c):n.tipo==='especie'?(TX[n.taxon]||TN.especie.c):TN[n.tipo].c;
 const rad=n=>n.tipo==='problema'?(['may','res','eco'].includes(n.id.slice(2))?13:8):n.tipo==='actor'?({1:9,2:7,3:5.5,4:5}[n.lv]||6):n.tipo==='propuesta'?11:n.tipo==='especie'?(n.grupo_especie?8:4):9;
 const NET=n=>n.tipo==='problema'?'problemas':n.tipo==='especie'&&!n.capa?'biotica':(n.tipo==='actor'&&!n.capa)?'social':n.tipo==='propuesta'?'propuesta':'conectografia';
@@ -27,7 +27,7 @@ const tipEl=$('#tip');const tip=(h,e)=>{tipEl.innerHTML=h;tipEl.style.display='b
 /* ---------- disposición: cuatro columnas que se cruzan ---------- */
 const svg=d3.select('#net');let W,H;
 function layout(){const r=$('main').getBoundingClientRect();W=r.width;H=r.height;svg.attr('viewBox',`0 0 ${W} ${H}`);
- const P=mobile();const cx=c=>P?W/2:W*(.12+c*.255),cy=c=>P?H*(.1+c*.265):H*.52;
+ const P=mobile();const cx=c=>P?W/2:W*(.08+c*.21),cy=c=>P?H*(.08+c*.21):H*.52;
  nodes.forEach(n=>{const c=COL(n.tipo);n.x=cx(c)+(Math.random()-.5)*40;n.y=cy(c)+(Math.random()-.5)*40});
  const sim=d3.forceSimulation(nodes).force('link',d3.forceLink(edges).strength(e=>COL(e.source.tipo)===COL(e.target.tipo)?.06:.008).distance(40))
   .force('q',d3.forceManyBody().strength(n=>n.tipo==='especie'?-14:-34)).force('x',d3.forceX(n=>cx(COL(n.tipo))).strength(P?.06:.32)).force('y',d3.forceY(n=>cy(COL(n.tipo))).strength(P?.32:.05))
@@ -49,7 +49,7 @@ const shape=(g,n)=>{const r=rad(n),c=fill(n);
  else if(n.tipo==='lugar'){const p=d3.range(6).map(i=>[r*1.15*Math.cos(Math.PI/3*i),r*1.15*Math.sin(Math.PI/3*i)]);g.append('path').attr('d','M'+p.join('L')+'Z').attr('fill',c).attr('stroke','#0b0d12')}
  else if(n.tipo==='infraestructura')g.append('rect').attr('x',-r).attr('y',-r).attr('width',r*2).attr('height',r*2).attr('fill',c).attr('stroke','#0b0d12');
  else if(n.tipo==='norma')g.append('path').attr('d',`M0,${-r*1.2}L${r*1.2},0L0,${r*1.2}L${-r*1.2},0Z`).attr('fill',c).attr('stroke','#0b0d12');
- else if(n.tipo==='condicion')g.append('path').attr('d',`M0,${-r*1.2}L${r*1.1},${r*.8}L${-r*1.1},${r*.8}Z`).attr('fill',c).attr('stroke','#0b0d12');
+ else if(n.tipo==='variable'||n.tipo==='recurso')g.append('path').attr('d',`M0,${-r*1.2}L${r*1.1},${r*.8}L${-r*1.1},${r*.8}Z`).attr('fill',c).attr('stroke','#0b0d12');
  else if(n.tipo==='propuesta'){g.append('circle').attr('r',r).attr('fill','#1d1a12').attr('stroke',c).attr('stroke-width',2.2).attr('stroke-dasharray','4 3');g.append('circle').attr('r',r*.35).attr('fill',c)}
  else g.append('circle').attr('r',r).attr('fill',c).attr('stroke',n.grupo_especie?'#fff':'#0b0d12').attr('stroke-width',n.grupo_especie?1.4:1)};
 const ns=gN.selectAll('g').data(nodes).join('g').attr('class','node').attr('transform',n=>`translate(${n.x},${n.y})`).each(function(n){shape(d3.select(this),n)});
@@ -62,9 +62,14 @@ const adj=new Map(nodes.map(n=>[n.id,[]]));edges.forEach(e=>{adj.get(e.s).push(e
 const nb=id=>adj.get(id).filter(vis).map(e=>e.s===id?e.t:e.s);
 let focus=null;
 /* ---------- filtros ---------- */
-const F={t:new Set(Object.keys(TN)),k:new Set(Object.keys(EK)),v:new Set(Object.keys(EV))};
-const vis=e=>F.k.has(e.k)&&F.v.has(e.ev)&&F.t.has(e.source.tipo)&&F.t.has(e.target.tipo);
-function apply(){ns.style('display',n=>F.t.has(n.tipo)?null:'none');es.style('display',e=>vis(e)?null:'none')}
+const F={t:new Set(Object.keys(TN)),k:new Set(Object.keys(EK)),v:new Set(Object.keys(EV)),mode:'prop'};
+const onlyProp=new Set(nodes.filter(n=>n.tipo==='propuesta'||(adj&&false)).map(n=>n.id));
+const vis=e=>F.k.has(e.k)&&F.v.has(e.ev)&&F.t.has(e.source.tipo)&&F.t.has(e.target.tipo)&&(F.mode==='prop'||e.ev!=='propuesta');
+function nodeVis(n){if(!F.t.has(n.tipo))return false;if(F.mode==='prop')return true;if(n.tipo==='propuesta')return false;return adj.get(n.id).some(e=>e.ev!=='propuesta')}
+function centr(){const CONS=['A15','A16','A17','A20','INF03','C01'],CORA=['A01','A06','A07','A09','LOG01','R_EXT'],LOC=['COM_HUE','X_FONDO','X_ACOP','R_LOC','X_DIST'];
+ const fl=edges.filter(e=>e.k==='flujo'&&(F.mode==='prop'||e.ev!=='propuesta')&&CONS.includes(e.t)&&(CORA.includes(e.s)||LOC.includes(e.s)));
+ const via=fl.filter(e=>CORA.includes(e.s));return [via.length,fl.length]}
+function apply(){ns.style('display',n=>nodeVis(n)?null:'none');es.style('display',e=>vis(e)?null:'none');const [a,b]=centr();const el=document.getElementById('modeInfo');if(el)el.innerHTML=`${F.mode==='prop'?'Red propuesta':'Red actual'}: <b>${Math.round(a/b*100)} %</b> de las relaciones de abastecimiento de alimentos hacia tiendas, restaurantes, hogares, comedores y colegios vienen de la cadena de Corabastos (${a} de ${b}); el resto viene de huertas, acopios y el Fondo Común.`}
 const sw={node:t=>`<svg width="16" height="16"><circle cx="8" cy="8" r="6" fill="${TN[t].c}"/></svg>`,edge:k=>`<svg width="24" height="10"><path d="M1 5H23" stroke="${EK[k].c}" stroke-width="2.4"/></svg>`,ev:v=>`<svg width="24" height="10"><path d="M1 5H23" stroke="#cfd3dc" stroke-width="2" ${EV[v].d?`stroke-dasharray="${EV[v].d}"`:''}/></svg>`};
 function togs(el,obj,set,kind,count){$(el).innerHTML=Object.entries(obj).map(([k,v])=>`<button class="tog" data-k="${k}" aria-pressed="true">${sw[kind](k)}${v.n}<b>${count(k)}</b></button>`).join('');
  $(el).querySelectorAll('.tog').forEach(b=>b.onclick=()=>{const k=b.dataset.k;set.has(k)?set.delete(k):set.add(k);b.setAttribute('aria-pressed',set.has(k));apply();if(focus)runFocus()})}
@@ -109,6 +114,7 @@ function info(n,set){const I=$('#info');
  I.innerHTML=head+lit+[...grp].map(([k,list])=>`<h2>${EK[k].n} · ${list.length}</h2>`+list.slice(0,40).map(e=>{const o=e.s===n.id?e.target:e.source;return`<div class="rel"><b>${e.s===n.id?'→':'←'} ${esc(o.short||o.name)}</b> · ${esc(e.sub)}<br><span class="pill" style="background:#1d2230;color:#cfd3dc">${EV[e.ev].n}</span>${e.m?esc(e.m).slice(0,180):''}</div>`}).join('')).join('');
 }
 info();apply();
+['mAct','mProp'].forEach(id=>document.getElementById(id).onclick=()=>{F.mode=id==='mAct'?'act':'prop';document.getElementById('mAct').setAttribute('aria-pressed',F.mode==='act');document.getElementById('mProp').setAttribute('aria-pressed',F.mode==='prop');apply();if(focus)runFocus()});
 $('#zin').onclick=()=>svg.transition().call(zoom.scaleBy,1.4);$('#zout').onclick=()=>svg.transition().call(zoom.scaleBy,1/1.4);$('#zfit').onclick=()=>fitTo(nodes,1);
 let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{L=layout();ns.attr('transform',n=>`translate(${n.x},${n.y})`);es.attr('d',path);headers()},300)});
 // entrada animada
